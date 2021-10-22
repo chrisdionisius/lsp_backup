@@ -1,6 +1,5 @@
 <?php
     include 'master.php';
-    $listKategori = mysqli_query($koneksi,"SELECT * FROM kategori");
 ?>
 <div class="d-flex" id="wrapper">
     <?php

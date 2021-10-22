@@ -1,6 +1,9 @@
 <?php
     include 'master.php';
     $listSurat = mysqli_query($koneksi,"SELECT * FROM surat");
+    if (isset($_GET['query']) ) {
+        $listSurat = mysqli_query($koneksi,"SELECT * FROM surat WHERE judul LIKE '%$_GET[query]%'");
+    }
 ?>
 <div class="d-flex" id="wrapper">
     <?php
@@ -20,9 +23,19 @@
                 </div>
                 <div class="col-6">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="nama surat"
-                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cari</button>
+                        <form action="" method="GET">
+                            <div class="row">
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="query" id="query"
+                                        placeholder="nama surat" aria-label="Recipient's username"
+                                        aria-describedby="button-addon2">
+                                </div>
+                                <div class="col-4">
+                                    <input class="btn btn-outline-secondary" type="submit" value="submit" name="submit">
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
@@ -53,9 +66,10 @@
                                     <td>$surat[tanggal]</td>
                                     <td>
                                         <div class='btn-group' role='group' aria-label='Basic example'>
-                                            <a class='btn btn-danger' onClick=\"javascript: return confirm('Please confirm deletion');\" href='hapus.php?nomor=".$surat['nomor']."'>Hapus</a>
-                                            <button type='button' class='btn btn-warning'>Unduh</button>
-                                            <button type='button' class='btn btn-primary'>Lihat >></button>
+                                            <a class='btn btn-danger' onClick=\"javascript: return confirm('Apakah anda yakin menghapus berkas ini ?');\" href='hapus.php?nomor=".$surat['nomor']."'>Hapus</a>
+                                            
+                                            <a class='btn btn-warning' href='unduh.php?direktori=".$surat['direktori']."'>Unduh</a>
+                                            <a class='btn btn-primary' href='lihat_surat.php?nomor=".$surat['nomor']."'>Lihat</a>
                                         </div>
                                     </td>
                                 </tr>";
