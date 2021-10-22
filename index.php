@@ -29,7 +29,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-10">
+                <div class="col-12">
                     <table class="table">
                         <thead>
                             <tr class="table-secondary">
@@ -53,7 +53,7 @@
                                     <td>$surat[tanggal]</td>
                                     <td>
                                         <div class='btn-group' role='group' aria-label='Basic example'>
-                                            <button type='button' class='btn btn-danger'>Hapus</button>
+                                            <a class='btn btn-danger' onClick=\"javascript: return confirm('Please confirm deletion');\" href='hapus.php?nomor=".$surat['nomor']."'>Hapus</a>
                                             <button type='button' class='btn btn-warning'>Unduh</button>
                                             <button type='button' class='btn btn-primary'>Lihat >></button>
                                         </div>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="container">
-            <button type="button" class="btn btn-outline-secondary">Arsipkan Surat</button>
+            <a class="btn btn-outline-secondary" href="unggah_surat.php">Arsipkan Surat</a>
         </div>
     </div>
     <!-- Page content wrapper-->

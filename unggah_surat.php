@@ -16,13 +16,13 @@
                 </ul>
         </div>
         <div class="container">
-            <form action="">
+            <form action="unggah.php" method="POST" enctype="multipart/form-data">
                 <div class="row g-3 align-items-center p-2">
                     <div class="col-sm-2">
                         <label for="inputPassword6" class="col-form-label">Nomor Surat</label>
                     </div>
                     <div class="col-sm-5">
-                        <input type="text" id="nomor" class="form-control">
+                        <input type="text" name="nomor" id="nomor" class="form-control">
                     </div>
                 </div>
                 <div class="row g-3 align-items-center p-2">
@@ -30,7 +30,7 @@
                         <label for="inputPassword6" class="col-form-label">Kategori</label>
                     </div>
                     <div class="col-sm-5">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" name="kategori" id="kategori">
                             <?php
                                 foreach ($listKategori as $kategori) {
                                     echo"<option value='$kategori[id]'>$kategori[nama_kategori]</option>";
@@ -44,20 +44,20 @@
                         <label for="inputPassword6" class="col-form-label">Judul</label>
                     </div>
                     <div class="col-sm-5">
-                        <input type="text" id="judul" class="form-control">
+                        <input type="text" name="judul" id="judul" class="form-control">
                     </div>
                 </div>
                 <div class="row g-3 align-items-center p-2">
                     <div class="col-sm-2">
-                        <label for="inputPassword6" class="col-form-label">File Surat(PDF)</label>
+                        <label for="inputFile" class="col-form-label">File Surat(PDF)</label>
                     </div>
                     <div class="col-sm-5">
-                        <input type="file" class="form-control-file" id="pdf" accept="application/pdf" name="surat">
+                        <input type="file" class="form-control-file" id="surat" accept="application/pdf" name="surat">
                     </div>
                 </div>
-                <a class="btn btn-outline-warning" href="#" role="button">
+                <a class="btn btn-outline-warning" href="index.php" role="button">
                     << Kembali</a>
-                        <input class="btn btn-outline-primary" type="submit" value="Submit">
+                        <input class="btn btn-outline-primary" type="submit" value="submit" name="submit">
             </form>
         </div>
         <div class="container">
