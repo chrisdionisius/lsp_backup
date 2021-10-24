@@ -51,8 +51,9 @@
             <a class="btn btn-outline-warning" href="index.php" role="button">
                 << Kembali</a>
                     <?php
-                echo "<a class='btn btn-outline-primary' href='unduh.php?direktori=".$surat['direktori']."'>Unduh</a>";
-                ?>
+                echo "<a class='btn btn-outline-primary' href='php/unduh.php?direktori=../".$surat['direktori']."'>Unduh</a>";
+                echo "<a class='btn btn-outline-secondary' href='edit.php?nomor=".$surat['nomor']."'>Edit/Ganti File</a>";
+            ?>
 
         </div>
     </div>

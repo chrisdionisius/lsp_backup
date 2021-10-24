@@ -1,6 +1,5 @@
 <?php
-    include 'koneksi.php';
-    $listSurat = mysqli_query($koneksi,"SELECT * FROM surat" );
+    include 'php/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
 <?php
     include 'master.php';
-    $listSurat = mysqli_query($koneksi,"SELECT * FROM surat");
+    session_start();
+    $listSurat = mysqli_query($koneksi,"SELECT * FROM surat ORDER BY tanggal DESC");
     if (isset($_GET['query']) ) {
         $listSurat = mysqli_query($koneksi,"SELECT * FROM surat WHERE judul LIKE '%$_GET[query]%'");
     }
@@ -40,6 +41,28 @@
                 </div>
             </div>
         </div>
+        <?php
+        if (isset($_SESSION['status'])) {
+            echo "
+            <div class='container'>
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>$_SESSION[status]</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            </div>";
+            unset($_SESSION['status']);
+        }else if (isset($_SESSION['delete'])) {
+            echo "
+            <div class='container'>
+                <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$_SESSION[delete]</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            </div>";
+            unset($_SESSION['delete']);
+        }
+        ?>
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -66,9 +89,8 @@
                                     <td>$surat[tanggal]</td>
                                     <td>
                                         <div class='btn-group' role='group' aria-label='Basic example'>
-                                            <a class='btn btn-danger' onClick=\"javascript: return confirm('Apakah anda yakin menghapus berkas ini ?');\" href='hapus.php?nomor=".$surat['nomor']."'>Hapus</a>
-                                            
-                                            <a class='btn btn-warning' href='unduh.php?direktori=".$surat['direktori']."'>Unduh</a>
+                                            <a class='btn btn-danger' onClick=\"javascript: return confirm('Apakah anda yakin menghapus berkas ini ?');\" href='php/hapus.php?nomor=".$surat['nomor']."'>Hapus</a>            
+                                            <a class='btn btn-warning' href='php/unduh.php?direktori=../".$surat['direktori']."'>Unduh</a>
                                             <a class='btn btn-primary' href='lihat_surat.php?nomor=".$surat['nomor']."'>Lihat</a>
                                         </div>
                                     </td>
