@@ -2,23 +2,23 @@ version: "3.8"
 services:
   php-apache-environment:
     image: chrisdionisius/lsp_surat
-    container_name: php-apache
+    container_name: php-apache2
     depends_on:
       - db
     volumes:
-      - ./php/src:/var/www/html/
+      - ./:/var/www/html/
     ports:
       - 8000:80
     networks:
       - backend
 
   db:
-    container_name: db
+    container_name: db2
     image: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: lsp
+      MYSQL_DATABASE: lsp_surat
     ports:
       - "3306:3306"
     volumes:
@@ -32,8 +32,8 @@ volumes:
 
 networks:
   backend:
-    name: backend-network
+    name: backend-network2
     ipam:
       driver: default
       config:
-        - subnet: 172.20.0.0/24
+        - subnet: 172.18.0.0/24
