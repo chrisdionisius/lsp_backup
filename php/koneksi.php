@@ -1,7 +1,7 @@
 <?php
-	$host="localhost";
+	$host="172.20.0.2";
 	$user="root";
-	$pass="";
+	$pass="root";
 	$db="lsp_surat";
 	$koneksi=mysqli_connect($host,$user,$pass);
 	mysqli_select_db($koneksi,$db);
